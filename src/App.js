@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from './Layout';
+import { findTheSmallestRemainder } from './utils';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const arr = [2, 4.5, 0.7, 3, 2, 7];
+	const deliveryPrice = 4.87;
+
+	const result = findTheSmallestRemainder(arr, deliveryPrice);
+
+	return (
+		<Layout>
+			{result.map((candidate, index) => (
+				<p key={index}>{candidate}</p>
+			))}
+		</Layout>
+	);
 }
 
 export default App;
+
+//it has to stop only if sum is equal, otherwise we keep running until we find the best combination
+//stamps can repeat unlimited number of times
