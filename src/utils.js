@@ -80,4 +80,10 @@ export const findTheSmallestRemainder = (initialArray, price) => {
 	return bestCandidates;
 };
 
-//
+export const getAllCombinations = (sizeLimit, valuesQty) => {
+	var result = [];
+	for (let i = 0; i < Math.pow(valuesQty, sizeLimit); i++) {
+		result.push(i.toString(valuesQty));
+	}
+	return result;
+};

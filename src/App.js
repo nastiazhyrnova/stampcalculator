@@ -1,11 +1,13 @@
 import Layout from './Layout';
-import { findTheSmallestRemainder } from './utils';
+import { findTheSmallestRemainder, getAllCombinations } from './utils';
 
 function App() {
 	const arr = [2, 4.5, 0.7, 3, 2, 7];
 	const deliveryPrice = 4.87;
 
 	const result = findTheSmallestRemainder(arr, deliveryPrice);
+
+	console.log(getAllCombinations(4, 4));
 
 	return (
 		<Layout>
