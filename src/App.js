@@ -2,18 +2,24 @@ import Layout from './Layout';
 import { findTheSmallestRemainder } from './utils';
 
 function App() {
-	const arr = [2, 4.5, 0.7, 3, 2, 7];
-	const deliveryPrice = 4.87;
+	const arr = [2, 4.5, 0.7, 3, 2, 1];
+	const deliveryPrice = 4;
 
 	const result = findTheSmallestRemainder(arr, deliveryPrice);
 
-	return (
-		<Layout>
-			{result.map((candidate, index) => (
-				<p key={index}>{candidate}</p>
+	console.log(result);
+
+	const results = result.map((option, index) => (
+		<div key={index} style={{ paddingBottom: '30px' }}>
+			{option.values.map((value, valueIndex) => (
+				<p key={valueIndex}>{value}</p>
 			))}
-		</Layout>
-	);
+		</div>
+	));
+
+	// console.log(getAllCombinations(4, 4));
+
+	return <Layout>{results}</Layout>;
 }
 
 export default App;
