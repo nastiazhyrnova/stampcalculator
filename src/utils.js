@@ -9,24 +9,22 @@ export const findTheSmallestRemainder = (initialArray, price) => {
 	}
 
 	array.sort();
-	console.log(array);
-
-	const bestSingleCandidate = array.find(item => item > price);
 
 	//remove from array all bigger values:
+	const bestSingleCandidate = array.find(item => item > price);
 	const bestSingleCandidateIndex = array.indexOf(bestSingleCandidate);
 	array.splice(bestSingleCandidateIndex + 1);
 
+	//get all possible combinations
 	const getAllNumberCombinations = (stampsLimit, valuesQty) => {
-		var result = [];
+		const result = [];
 		for (let i = 0; i < Math.pow(valuesQty, stampsLimit); i++) {
 			result.push(i.toString(valuesQty));
 		}
 		return result;
 	};
 
-	//NEW APPROACH:
-
+	//
 	const numbersCombinations = getAllNumberCombinations(3, array.length);
 	const ordered = numbersCombinations.map(combination =>
 		combination.split('').sort().join('')
@@ -35,8 +33,8 @@ export const findTheSmallestRemainder = (initialArray, price) => {
 
 	const allPossibleCombinations = orderedNoDuplicates.reduce(
 		(filtered, combination) => {
-			const splitArr = combination.split('');
-			const realValuesArr = splitArr.map(singleItem => {
+			const splitValues = combination.split('');
+			const realValues = splitValues.map(singleItem => {
 				let result;
 				for (let i = 0; i < array.length; i++) {
 					if (singleItem === i.toString()) {
@@ -46,10 +44,10 @@ export const findTheSmallestRemainder = (initialArray, price) => {
 				}
 				return result;
 			});
-			const sum = realValuesArr.reduce((a, b) => a + b, 0);
-			if (sum >= price && sum <= array[array.length - 1]) {
+			const sum = realValues.reduce((a, b) => a + b, 0);
+			if (sum >= price && sum <= bestSingleCandidate) {
 				filtered.push({
-					values: realValuesArr,
+					values: realValues,
 					remainder: sum % price,
 				});
 			}

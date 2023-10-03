@@ -1,13 +1,13 @@
 import Layout from './Layout';
 import { findTheSmallestRemainder } from './utils';
+import stamp from './assets/stamp4.svg';
+import classes from './App.module.scss';
 
 function App() {
 	const arr = [2, 4.5, 0.7, 3, 2, 1];
 	const deliveryPrice = 4;
 
 	const result = findTheSmallestRemainder(arr, deliveryPrice);
-
-	console.log(result);
 
 	const results = result.map((option, index) => (
 		<div key={index} style={{ paddingBottom: '30px' }}>
@@ -17,9 +17,12 @@ function App() {
 		</div>
 	));
 
-	// console.log(getAllCombinations(4, 4));
-
-	return <Layout>{results}</Layout>;
+	return (
+		<Layout>
+			{results}
+			<img src={stamp} className={classes.Image} />
+		</Layout>
+	);
 }
 
 export default App;
