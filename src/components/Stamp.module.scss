@@ -1,0 +1,23 @@
+.Container {
+	position: relative;
+	width: fit-content;
+	width: -moz-fit-content;
+
+	.TextContainer {
+		position: absolute;
+		width: 100%;
+		bottom: 20px;
+		text-align: center;
+		z-index: 1;
+
+		span {
+			background-color: white;
+			padding: 2px 4px;
+		}
+	}
+
+	.Image {
+		width: 150px;
+		position: relative;
+	}
+}

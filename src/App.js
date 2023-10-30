@@ -1,28 +1,32 @@
 import Layout from './Layout';
 import { findTheSmallestRemainder } from './utils';
-import stamp from './assets/stamp4.svg';
+import Stamp from './components/Stamp';
+
+import stamp1 from './assets/stamp1.svg';
+import stamp2 from './assets/stamp2.svg';
+import stamp3 from './assets/stamp3.svg';
+import stamp4 from './assets/stamp4.svg';
+
 import classes from './App.module.scss';
 
 function App() {
-	const arr = [2, 4.5, 0.7, 3, 2, 1];
-	const deliveryPrice = 4;
+	const arr = [0.78, 1.65, 1.75, 2.1, 2, 1, 0.6, 4];
+	const deliveryPrice = 1.95;
 
 	const result = findTheSmallestRemainder(arr, deliveryPrice);
 
 	const results = result.map((option, index) => (
-		<div key={index} style={{ paddingBottom: '30px' }}>
-			{option.values.map((value, valueIndex) => (
-				<p key={valueIndex}>{value}</p>
-			))}
-		</div>
+		<>
+			<h3>Option {index + 1}</h3>
+			<div key={index} className={classes.StampsContainer}>
+				{option.values.map((value, valueIndex) => (
+					<Stamp key={valueIndex} price={value} image={stamp2}></Stamp>
+				))}
+			</div>
+		</>
 	));
 
-	return (
-		<Layout>
-			{results}
-			<img src={stamp} className={classes.Image} />
-		</Layout>
-	);
+	return <Layout>{results}</Layout>;
 }
 
 export default App;
