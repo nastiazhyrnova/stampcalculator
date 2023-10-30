@@ -7,8 +7,6 @@ function App() {
 	const priceRef = useRef();
 	const [deliveryPrice, setDeliveryPrice] = useState(null);
 
-	console.log(typeof priceRef.current?.value);
-
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		setDeliveryPrice(Number(priceRef.current?.value.trim()));

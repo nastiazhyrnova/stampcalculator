@@ -1,4 +1,5 @@
 export const findTheSmallestRemainder = (initialArray, price) => {
+	console.log(price);
 	//remove duplicates
 	const array = [...new Set(initialArray)];
 
@@ -51,14 +52,14 @@ export const findTheSmallestRemainder = (initialArray, price) => {
 				if (sum >= price && sum <= bestSingleCandidate) {
 					filtered.push({
 						values: realValues,
-						remainder: sum % price,
+						remainder: sum - price,
 					});
 				}
 			} else {
 				if (sum >= price) {
 					filtered.push({
 						values: realValues,
-						remainder: sum % price,
+						remainder: sum - price,
 					});
 				}
 			}
