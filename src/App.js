@@ -6,7 +6,7 @@ import classes from './App.module.scss';
 
 function App() {
 	const arr = [0.78, 1.65, 1.75, 2.1, 2, 1, 0.6, 4];
-	const deliveryPrice = 2.7;
+	const deliveryPrice = 2.95;
 
 	const result = findTheSmallestRemainder(arr, deliveryPrice);
 

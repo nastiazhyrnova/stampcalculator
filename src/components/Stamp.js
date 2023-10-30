@@ -10,8 +10,8 @@ const Stamp = ({ title, price, imageIndex }) => {
 	return (
 		<div className={classes.Container}>
 			<div className={classes.TextContainer}>
-				{title && <span className={classes.Title}>{title}</span>}
-				<br />
+				{/* {title && <span className={classes.Title}>{title}</span>}
+				<br /> */}
 				<span className={classes.Price}>{price.toFixed(2)}€</span>
 			</div>
 			<img
