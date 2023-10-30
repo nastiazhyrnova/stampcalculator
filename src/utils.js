@@ -47,12 +47,22 @@ export const findTheSmallestRemainder = (initialArray, price) => {
 				return result;
 			});
 			const sum = realValues.reduce((a, b) => a + b, 0);
-			if (sum >= price && sum <= bestSingleCandidate) {
-				filtered.push({
-					values: realValues,
-					remainder: sum % price,
-				});
+			if (bestSingleCandidate) {
+				if (sum >= price && sum <= bestSingleCandidate) {
+					filtered.push({
+						values: realValues,
+						remainder: sum % price,
+					});
+				}
+			} else {
+				if (sum >= price) {
+					filtered.push({
+						values: realValues,
+						remainder: sum % price,
+					});
+				}
 			}
+
 			return filtered;
 		},
 		[]
