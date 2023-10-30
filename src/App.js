@@ -1,15 +1,30 @@
+import { useRef, useState } from 'react';
+
 import Layout from './Layout';
 import Options from './components/Options';
 
 function App() {
+	const priceRef = useRef();
+	const [deliveryPrice, setDeliveryPrice] = useState(null);
+
+	console.log(typeof priceRef.current?.value);
+
+	const onSubmitHandler = e => {
+		e.preventDefault();
+		setDeliveryPrice(Number(priceRef.current?.value.trim()));
+	};
+
 	return (
 		<Layout>
-			<Options />
+			<form>
+				<input type='number' ref={priceRef} placeholder='Enter price' />
+				<button onClick={onSubmitHandler} type='submit'>
+					Calculate
+				</button>
+			</form>
+			<Options deliveryPrice={deliveryPrice} />
 		</Layout>
 	);
 }
 
 export default App;
-
-//it has to stop only if sum is equal, otherwise we keep running until we find the best combination
-//stamps can repeat unlimited number of times
