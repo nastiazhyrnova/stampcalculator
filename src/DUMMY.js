@@ -21,7 +21,4 @@ export const STAMPS = [
 	{
 		price: 0.6,
 	},
-	{
-		price: 4,
-	},
 ];
