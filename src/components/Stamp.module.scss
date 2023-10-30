@@ -13,6 +13,11 @@
 		span {
 			background-color: white;
 			padding: 2px 4px;
+
+			&.Price {
+				font-size: 1.5rem;
+				font-family: 'Lora', serif;
+			}
 		}
 	}
 

@@ -2,29 +2,43 @@ import Layout from './Layout';
 import { findTheSmallestRemainder } from './utils';
 import Stamp from './components/Stamp';
 
-import stamp1 from './assets/stamp1.svg';
-import stamp2 from './assets/stamp2.svg';
-import stamp3 from './assets/stamp3.svg';
-import stamp4 from './assets/stamp4.svg';
-
 import classes from './App.module.scss';
 
 function App() {
 	const arr = [0.78, 1.65, 1.75, 2.1, 2, 1, 0.6, 4];
-	const deliveryPrice = 1.95;
+	const deliveryPrice = 2.7;
 
 	const result = findTheSmallestRemainder(arr, deliveryPrice);
 
-	const results = result.map((option, index) => (
-		<>
-			<h3>Option {index + 1}</h3>
-			<div key={index} className={classes.StampsContainer}>
-				{option.values.map((value, valueIndex) => (
-					<Stamp key={valueIndex} price={value} image={stamp2}></Stamp>
-				))}
+	const results = result.map((option, index) => {
+		//check how many stamp types are needed
+		const stampsTypes = [...new Set(option.values)].map((price, imageIndex) => {
+			return {
+				imageIndex,
+				price,
+			};
+		});
+
+		return (
+			<div key={index}>
+				<h3>Option {index + 1}</h3>
+				<div className={classes.StampsWrapper}>
+					{option.values.map((value, valueIndex) => {
+						const stampType = stampsTypes.find(type => type.price === value);
+
+						return (
+							<>
+								<Stamp
+									key={valueIndex}
+									price={value}
+									imageIndex={stampType.imageIndex}></Stamp>
+							</>
+						);
+					})}
+				</div>
 			</div>
-		</>
-	));
+		);
+	});
 
 	return <Layout>{results}</Layout>;
 }
